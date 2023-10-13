@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rect"
+    android:backgroundTint="@color/transparent_80">
+
+    <RelativeLayout
+        android:id="@+id/RLOutline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:paddingStart="2dp"
+        android:paddingEnd="0dp"
+        android:background="@drawable/round_corners_top_left_bottom_left"
+        android:layout_alignParentEnd="true">
+    <RelativeLayout
+        android:id="@+id/RLMenuWrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corners_top_left_bottom_left"
+        android:padding="4dp"
+        android:elevation="24dp">
+        <LinearLayout
+            android:id="@+id/LLTopMenuSectionWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="46dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="124dp"
+                android:text="@string/menu"
+                android:textSize="32sp" />
+
+            <ImageButton
+                android:id="@+id/IBBackMenu"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/circle"
+                style="@style/themeBtn"
+                android:src="@drawable/right_vector"
+                android:contentDescription="@string/back"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/BDownloadTxt"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LLTopMenuSectionWrapper"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"
+            android:text="@string/download_txt"
+            android:textSize="18sp"/>
+
+        <View
+            android:id="@+id/hr1"
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:layout_below="@+id/BDownloadTxt"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_corners"
+            style="@style/viewSeparators"/>
+
+        <Button
+            android:id="@+id/BBackup"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/BDownloadTxt"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"
+            android:text="@string/backup"
+            android:textSize="18sp"/>
+
+        <View
+            android:id="@+id/hr2"
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:layout_below="@+id/BBackup"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_corners"
+            style="@style/viewSeparators"/>
+
+        <Button
+            android:id="@+id/BRestore"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/BBackup"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"
+            android:text="@string/restore"
+            android:textSize="18sp"/>
+
+        <View
+            android:id="@+id/hr3"
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:layout_below="@+id/BRestore"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_corners"
+            style="@style/viewSeparators"/>
+
+    <!-- TODO add settings button if im going to use login -->
+        <Button
+            android:id="@+id/BSettings"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hr3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/settings"
+            android:textSize="18sp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="8dp">
+
+            <ImageButton
+                android:id="@+id/IBChangeTheme"
+                android:layout_width="48sp"
+                android:layout_height="48sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="124dp"
+                android:background="@drawable/circle"
+                style="@style/themeBtn"
+                android:src="@drawable/light_mode_vector"
+                android:contentDescription="@string/dark_light_mode" />
+
+            <ImageButton
+                android:id="@+id/IBAbout"
+                android:layout_width="48sp"
+                android:layout_height="48sp"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/circle"
+                style="@style/aboutBtn"
+                android:src="@drawable/info_vector"
+                android:contentDescription="@string/about"/>
+        </LinearLayout>
+    </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

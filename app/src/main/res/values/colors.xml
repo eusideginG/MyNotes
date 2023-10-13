@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  basic colors  -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="red">#FFFF0000</color>
+    <color name="green">#FF00FF00</color>
+    <color name="yellow">#FFFFFF00</color>
+    <color name="purple">#FFFF00FF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="transparent_80">#CC000000</color>
+
+    <!--  custom colors (light theme)  -->
+    <color name="primary">#ffef00</color>
+    <color name="primaryVer">#ebdb37</color>
+    <color name="primaryItemBG">#fffcde</color>
+    <color name="primaryBG">#cdc200</color>
+    <color name="primaryText">#1a1a00</color>
+    <color name="primaryText50">#801A1A00</color>
+
+</resources>

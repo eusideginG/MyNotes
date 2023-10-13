@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RLAddNoteContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rect"
+    tools:context=".AddActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/ITopBar"
+            layout="@layout/top_bar" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ITopBar"
+            android:padding="8dp">
+
+            <EditText
+                android:id="@+id/ETAddTitle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/round_corners"
+                android:digits="@string/digitsFilter"
+                android:gravity="center_vertical"
+                android:hint="@string/title"
+                android:paddingHorizontal="12dp"
+                android:singleLine="true"
+                android:text=""
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/ETAddColor"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/ETAddTitle"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_toStartOf="@id/TBRgbHex"
+                android:background="@drawable/round_corners"
+                android:digits="@string/digitsColorFilter"
+                android:gravity="center_vertical"
+                android:hint="@string/rgb_code"
+                android:paddingHorizontal="12dp"
+                android:singleLine="true"
+                android:text=""
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/LLColorsPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@id/ETAddTitle"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/TBRgbHex"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageButton
+                    android:id="@+id/IBColorRed"
+                    style="@style/redBGColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rect"
+                    android:contentDescription="@string/red"
+                    app:tint="@color/primaryBG" />
+
+                <ImageButton
+                    android:id="@+id/IBColorGreen"
+                    style="@style/greenBGColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rect"
+                    android:backgroundTint="@color/red"
+                    android:contentDescription="@string/green"
+                    app:tint="@color/primaryBG" />
+
+                <ImageButton
+                    android:id="@+id/IBColorBlue"
+                    style="@style/blueBGColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rect"
+                    android:backgroundTint="@color/yellow"
+                    android:contentDescription="@string/blue"
+                    app:tint="@color/primaryBG" />
+
+                <ImageButton
+                    android:id="@+id/IBColorYellow"
+                    style="@style/yellowBGColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rect"
+                    android:backgroundTint="@color/blue"
+                    android:contentDescription="@string/yellow"
+                    app:tint="@color/primaryBG" />
+
+                <ImageButton
+                    android:id="@+id/IBColorPurple"
+                    style="@style/purpleBGColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rect"
+                    android:contentDescription="@string/purple"
+                    app:tint="@color/primaryBG" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/TBRgbHex"
+                style="@style/customBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ETAddTitle"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/round_corners"
+                android:elevation="12dp"
+                android:gravity="center"
+                android:text="@string/rgb" />
+
+            <RelativeLayout
+                android:id="@+id/RLNoteBodyWrapper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/BSave"
+                android:layout_below="@id/TBRgbHex"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_corners">
+
+                <LinearLayout
+                    android:id="@+id/LLIbWrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp">
+
+                    <ImageButton
+                        android:id="@+id/IBAddText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="0.5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/round_corners_top_left"
+                        android:contentDescription="@string/add_note_text"
+                        android:src="@drawable/note_vector"
+                        app:tint="@color/primary" />
+
+                    <ImageButton
+                        android:id="@+id/IBAddList"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="0.5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/round_corners_top_right"
+                        android:contentDescription="@string/add_note_list"
+                        android:src="@drawable/list_vector"
+                        app:tint="@color/primaryBG" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/ETNoteBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/LLIbWrapper"
+                    android:background="@drawable/round_corners_bottom_left_bottom_right"
+                    android:digits="@string/digitsFilter"
+                    android:gravity="start|top"
+                    android:hint="@string/my_note"
+                    android:paddingHorizontal="12dp"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="8dp"
+                    android:text=""
+                    android:visibility="visible" />
+
+                <!-- add list wrapper -->
+                <RelativeLayout
+                    android:id="@+id/RLAddNoteListWrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/LLIbWrapper"
+                    android:background="@drawable/round_corners"
+                    android:visibility="gone">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/RVAddListItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/FABAddListItem"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/RVAddListItem"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="8dp"
+                                android:background="@drawable/circle"
+                                android:backgroundTint="@color/primary"
+                                android:contentDescription="@string/add_note_list"
+                                android:src="@drawable/add_vector"
+                                app:shapeAppearance="@drawable/circle" />
+                        </RelativeLayout>
+                    </ScrollView>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/BSave"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_corners"
+                android:paddingHorizontal="64dp"
+                android:text="@string/save"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

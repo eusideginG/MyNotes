@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/SVPopUpWrapper"
+    android:layout_width="300dp"
+    android:layout_height="350dp"
+    android:layout_gravity="center"
+    android:background="@drawable/round_corners"
+    android:padding="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corners"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/TVAbout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/about_camel"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/hr1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/round_corners"
+            android:layout_below="@+id/TVAbout1"
+            android:layout_marginVertical="8dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hr1"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/TVAbout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </ScrollView>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CVItemHolder"
+    style="@style/noteCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="24dp">
+
+    <RelativeLayout
+        android:id="@+id/RLItemHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corners_soft">
+
+        <View
+            android:id="@+id/VItemColorId"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_corners_soft"
+            tools:backgroundTint="@color/blue" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/round_corners_soft"
+            android:backgroundTint="@color/primaryItemBG"
+            android:paddingHorizontal="6dp">
+
+            <TextView
+                android:id="@+id/TVItemTitle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/LLItemDate"
+                android:background="@drawable/round_corners_soft"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="6dp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="Title" />
+
+            <LinearLayout
+                android:id="@+id/LLItemDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/TVItemDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="end"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="20-02-2012" />
+
+                <TextView
+                    android:id="@+id/TVItemTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:gravity="end"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="Sun - 03:12pm" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  custom colors (dark theme)  -->
+    <color name="primary">#665c00</color>
+    <color name="primaryVer">#4d4500</color>
+    <color name="primaryItemBG">#332e00</color>
+    <color name="primaryBG">#1a1700</color>
+    <color name="primaryText">#fffce6</color>
+    <color name="primaryText50">#80FCE6DE</color>
+</resources>

@@ -1,0 +1,62 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyNotes" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryVer</item>
+        <item name="colorOnPrimary">@color/primaryText</item>
+        <item name="android:textColorPrimary">@color/primaryText</item>
+        <item name="colorAccent">@color/primary</item>
+        <item name="android:textColor">@color/primaryText</item>
+        <item name="backgroundTint">@color/primaryItemBG</item>
+        <item name="android:backgroundTint">@color/primaryBG</item>
+        <item name="android:textColorHint">@color/primaryText50</item>
+        <item name="tint">@color/primary</item>
+        <item name="cardBackgroundColor">@color/primaryItemBG</item>
+    </style>
+
+    <style name="noteCard" parent="Base.Theme.MyNotes">
+        <item name="android:backgroundTint">@color/primaryItemBG</item>
+    </style>
+
+    <style name="AlertDialog" parent="Theme.Material3.DayNight.Dialog.Alert">
+        <item name="shapeAppearanceOverlay">@drawable/round_corners</item>
+    </style>
+
+    <style name="themeBtn" parent="Widget.Material3.MaterialTimePicker.ImageButton">
+        <item name="backgroundTint">@color/transparent</item>
+        <item name="tint">@color/primaryText</item>
+    </style>
+
+    <style name="aboutBtn" parent="Widget.Material3.MaterialTimePicker.ImageButton">
+        <item name="backgroundTint">@color/primaryText</item>
+        <item name="tint">@color/primaryBG</item>
+    </style>
+
+    <style name="viewSeparators" parent="Base.Theme.MyNotes">
+        <item name="android:backgroundTint">@color/primaryText</item>
+    </style>
+
+    <style name="customBtn" parent="Base.Theme.MyNotes">
+        <item name="backgroundTint">@color/primary</item>
+    </style>
+
+    <style name="redBGColor" parent="Base.Theme.MyNotes">
+        <item name="backgroundTint">@color/red</item>
+    </style>
+
+    <style name="greenBGColor" parent="Base.Theme.MyNotes">
+        <item name="backgroundTint">@color/green</item>
+    </style>
+
+    <style name="blueBGColor" parent="Base.Theme.MyNotes">
+        <item name="backgroundTint">@color/blue</item>
+    </style>
+
+    <style name="yellowBGColor" parent="Base.Theme.MyNotes">
+        <item name="backgroundTint">@color/yellow</item>
+    </style>
+
+    <style name="purpleBGColor" parent="Base.Theme.MyNotes">
+        <item name="backgroundTint">@color/purple</item>
+    </style>
+</resources>

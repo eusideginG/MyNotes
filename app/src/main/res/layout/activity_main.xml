@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RLMainActivityContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/ITopBar"
+        layout="@layout/top_bar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RVMainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ITopBar"
+        android:layout_marginTop="12dp" />
+
+    <ImageButton
+        android:id="@+id/FABAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
+        android:contentDescription="@string/add"
+        android:background="@drawable/circle"
+        android:src="@drawable/add_vector"
+        app:shapeAppearance="@drawable/circle" />
+
+</RelativeLayout>
