@@ -14,14 +14,22 @@ import java.util.concurrent.ExecutionException;
 
 public class ViewAndEditViewModel extends AndroidViewModel {
     private String title, rgb, hex, text, rawColorPicked = "";
-    private int noteColor, colorBtnState = 0;
+    private int noteColor, colorBtnState = 0, rawColor = 0;
     private Note note;
     private ArrayList<NoteList> noteLists;
-    private NoteRepo noteRepo;
+    private final NoteRepo noteRepo;
 
     public ViewAndEditViewModel(@NonNull Application application) {
         super(application);
         noteRepo = new NoteRepo(application);
+    }
+
+    public int getRawColor() {
+        return rawColor;
+    }
+
+    public void setRawColor(int rawColor) {
+        this.rawColor = rawColor;
     }
 
     public String getTitle() {

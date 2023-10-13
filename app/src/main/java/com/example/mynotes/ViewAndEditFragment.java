@@ -37,20 +37,15 @@ import java.util.concurrent.ExecutionException;
 public class ViewAndEditFragment extends Fragment implements View.OnClickListener {
 private final String TAG = this.getClass().getSimpleName();
     private ViewAndEditViewModel mViewModel;
-    MenuHelper menuHelper;
     Note note;
     EditText etTitle, etNoteColor, etNoteText;
     Button bColorPicker;
-    ImageButton ibAddListItem, ibMenu, ibColorRed, ibColorGreen, ibColorBlue, ibColorYellow, ibColorPurple;;
+    ImageButton ibAddListItem, ibMenu, ibColorRed, ibColorGreen, ibColorBlue, ibColorYellow, ibColorPurple;
     RecyclerView rvAddList;
     LinearLayout llColorsPicker;
     Button bSave;
     ListItemAdapter listItemAdapter;
     Activity activity;
-
-    public static ViewAndEditFragment newInstance() {
-        return new ViewAndEditFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -90,8 +85,36 @@ private final String TAG = this.getClass().getSimpleName();
         bSave = view.findViewById(R.id.BSaveEdit);
 
         etTitle.setText(note.getTitle(), TextView.BufferType.EDITABLE);
-        etNoteColor.setText(mViewModel.getRgb());
         etNoteText.setText(note.getNoteText());
+        switch (mViewModel.getRawColor()) {
+            case 1:
+                mViewModel.setRawColorPicked("#FF0000");
+                mViewModel.setNoteColor(Color.parseColor("#FF0000"));
+                ibColorRed.setImageResource(R.drawable.check_vector);
+                break;
+            case 2:
+                mViewModel.setRawColorPicked("#00FF00");
+                mViewModel.setNoteColor(Color.parseColor("#00FF00"));
+                ibColorGreen.setImageResource(R.drawable.check_vector);
+                break;
+            case 3:
+                mViewModel.setRawColorPicked("#0000FF");
+                mViewModel.setNoteColor(Color.parseColor("#0000FF"));
+                ibColorBlue.setImageResource(R.drawable.check_vector);
+                break;
+            case 4:
+                mViewModel.setRawColorPicked("#FFFF00");
+                mViewModel.setNoteColor(Color.parseColor("#FFFF00"));
+                ibColorYellow.setImageResource(R.drawable.check_vector);
+                break;
+            case 5:
+                mViewModel.setRawColorPicked("#FF00FF");
+                mViewModel.setNoteColor(Color.parseColor("#FF00FF"));
+                ibColorPurple.setImageResource(R.drawable.check_vector);
+                break;
+            default:
+                mViewModel.setRawColorPicked("");
+        }
 
         mViewModel.setNote(note);
         mViewModel.setTitle(note.getTitle());
@@ -111,6 +134,12 @@ private final String TAG = this.getClass().getSimpleName();
 
         String rgb = red + ", " + green + ", " + blue;
         String hex = String.format("#%02x%02x%02x", Math.round(c.red() * 255), Math.round(c.green() * 255), Math.round(c.blue() * 255));
+
+        if (red.equals("255") && green.equals("0") && blue.equals("0")) mViewModel.setRawColor(1);
+        else if (red.equals("0") && green.equals("255") && blue.equals("0")) mViewModel.setRawColor(2);
+        else if (red.equals("0") && green.equals("0") && blue.equals("255")) mViewModel.setRawColor(3);
+        else if (red.equals("255") && green.equals("255") && blue.equals("0")) mViewModel.setRawColor(4);
+        else if (red.equals("255") && green.equals("0") && blue.equals("255")) mViewModel.setRawColor(5);
 
         mViewModel.setRgb(rgb);
         mViewModel.setHex(hex);
@@ -138,7 +167,7 @@ private final String TAG = this.getClass().getSimpleName();
                     mViewModel.setColorBtnState(2);
                     bColorPicker.setText(R.string.colors);
                     etNoteColor.setHint(R.string.hex_code);
-                    etNoteColor.setText("");
+                    etNoteColor.setText(mViewModel.getHex());
                     break;
                 case 2:
                     mViewModel.setColorBtnState(0);
@@ -152,10 +181,12 @@ private final String TAG = this.getClass().getSimpleName();
                     llColorsPicker.setVisibility(View.GONE);
                     etNoteColor.setVisibility(View.VISIBLE);
                     etNoteColor.setHint(R.string.rgb_code);
-                    etNoteColor.setText("");
+                    etNoteColor.setText(mViewModel.getRgb());
                     break;
             }
         });
+
+        etNoteColor.setOnFocusChangeListener((view, b) -> mViewModel.setRawColorPicked(""));
 
         ibAddListItem.setOnClickListener(view -> {
             // add item to recycle view
@@ -219,6 +250,7 @@ private final String TAG = this.getClass().getSimpleName();
     }
 
     private boolean checkAddColor(String color) {
+        mViewModel.setNoteColor(note.getColor());
         if (!mViewModel.getRawColorPicked().equals("")) {
             // raw color
             try {
