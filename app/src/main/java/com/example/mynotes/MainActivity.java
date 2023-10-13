@@ -1,6 +1,5 @@
 package com.example.mynotes;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +16,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -61,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 if (result.getResultCode() == 133) {
-                    Log.d("test", "working"); // TODO del
                     Intent intent = result.getData();
                     if (intent != null) {
                         if (intent.getBooleanExtra("updateRV", false)) {
@@ -74,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 if (result.getResultCode() == RESULT_OK) {
-                    OutputStream os = null;
+                    OutputStream os;
                     try {
                         ArrayList<Note> allNotes = noteViewModel.getAllNotes();
                         ArrayList<NoteList> allNoteLists = noteViewModel.getAllNoteLists();
@@ -120,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> activityResultLauncher2 = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == RESULT_OK) {
-                    OutputStream os = null;
+                    OutputStream os;
 
                     try {
                         ArrayList<Note> allNotes = noteViewModel.getAllNotes();
@@ -171,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                         assert result.getData() != null;
                         InputStream inputStream = getContentResolver().openInputStream(Objects.requireNonNull(result.getData().getData()));
                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                        String csvRow = null;
+                        String csvRow;
                         String noteTitle = null;
                         boolean noteAdded = false;
                         int i = 0;

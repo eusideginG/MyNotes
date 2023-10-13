@@ -28,7 +28,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mynotes.adapters.ListItemAdapter;
-import com.example.mynotes.adapters.NoteRVAdapter;
 import com.example.mynotes.model.roomdb.Note;
 import com.example.mynotes.model.roomdb.NoteList;
 import com.example.mynotes.utils.MenuHelper;
@@ -45,7 +44,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
-// TODO copy all menu functionality from MainActivity class in this class
 public class AddActivity extends AppCompatActivity implements View.OnClickListener {
     private final String TAG = this.getClass().getSimpleName();
     MenuHelper menuHelper;
@@ -74,7 +72,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
                     }
                 }
                 if (result.getResultCode() == RESULT_OK) {
-                    OutputStream os = null;
+                    OutputStream os;
                     try {
                         ArrayList<Note> allNotes = addViewModel.getAllNotes();
                         ArrayList<NoteList> allNoteLists = addViewModel.getAllNoteLists();
@@ -120,7 +118,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
     ActivityResultLauncher<Intent> activityResultLauncher2 = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == RESULT_OK) {
-                    OutputStream os = null;
+                    OutputStream os;
 
                     try {
                         ArrayList<Note> allNotes = addViewModel.getAllNotes();
@@ -171,7 +169,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
                         assert result.getData() != null;
                         InputStream inputStream = getContentResolver().openInputStream(Objects.requireNonNull(result.getData().getData()));
                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                        String csvRow = null;
+                        String csvRow;
                         String noteTitle = null;
                         boolean noteAdded = false;
                         int i = 0;
