@@ -49,11 +49,10 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
     MenuHelper menuHelper;
     AddViewModel addViewModel;
     EditText etTitle, etNoteColor, etNoteText;
-    Button bColorPicker;
+    Button bColorPicker, bSave;
     ImageButton ibAddText, ibAddList, ibColorRed, ibColorGreen, ibColorBlue, ibColorYellow, ibColorPurple;
     RecyclerView rvAddList;
     FloatingActionButton ibAddListItem;
-    Button bSave;
     RelativeLayout rlAddList;
     LinearLayout llColorsPicker;
     ListItemAdapter listItemAdapter;
@@ -346,19 +345,10 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
         });
         // save note
         bSave.setOnClickListener(view -> {
-            // set title to view model
-            if (checkAddTitle(etTitle.getText().toString())) {
-                // set color state list to view model
-                if (checkAddColor(etNoteColor.getText().toString())) {
-                    // set text to view model
-                    checkAddText(etNoteText.getText().toString());
-                    // set note list to view model
-                    checkAddNoteList(listItemAdapter.getNoteList());
-                    // save the note
-                    try {
-                        saveNote();
-                    } catch (ExecutionException | InterruptedException e) { throw new RuntimeException(e); }
-                }
+            try {
+                saveNote();
+            } catch (ExecutionException | InterruptedException e) {
+                throw new RuntimeException(e);
             }
         });
     }
@@ -520,21 +510,34 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
     private void saveNote() throws ExecutionException, InterruptedException {
-        LocalDateTime localDateTime = LocalDateTime.now();
+        // set title to view model
+        if (checkAddTitle(etTitle.getText().toString())) {
+            // set color state list to view model
+            if (checkAddColor(etNoteColor.getText().toString())) {
+                // set text to view model
+                checkAddText(etNoteText.getText().toString());
+                // set note list to view model
+                checkAddNoteList(listItemAdapter.getNoteList());
+                // save the note
+                try {
+                    LocalDateTime localDateTime = LocalDateTime.now();
 
-        Note note = new Note(addViewModel.getTitle(), addViewModel.getNoteColor(), localDateTime.toString(), addViewModel.getText());
-        if (addViewModel.getNewNoteList() == null) {
-            addViewModel.saveNote(note);
-        } else {
-            addViewModel.saveNote(note);
-            addViewModel.saveNoteList(addViewModel.getNewNoteList());
+                    Note note = new Note(addViewModel.getTitle(), addViewModel.getNoteColor(), localDateTime.toString(), addViewModel.getText());
+                    if (addViewModel.getNewNoteList() == null) {
+                        addViewModel.saveNote(note);
+                    } else {
+                        addViewModel.saveNote(note);
+                        addViewModel.saveNoteList(addViewModel.getNewNoteList());
+                    }
+
+                    clrView();
+
+                    Intent intent = new Intent();
+                    intent.putExtra("result", true);
+                    setResult(100, intent);
+                } catch (ExecutionException | InterruptedException e) { throw new RuntimeException(e); }
+            }
         }
-
-        clrView();
-
-        Intent intent = new Intent();
-        intent.putExtra("result", true);
-        setResult(100, intent);
         super.onBackPressed();
     }
     private void clrView() {
@@ -577,5 +580,15 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
             addViewModel.setRawColorPicked("#FF00FF");
             ibColorPurple.setImageResource(R.drawable.check_vector);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        try {
+            saveNote();
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        super.onBackPressed();
     }
 }
