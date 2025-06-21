@@ -25,7 +25,6 @@
             android:layout_height="match_parent"
             android:layout_toStartOf="@id/IBDeleteAddListItem"
             android:layout_toEndOf="@id/IBListType"
-            android:digits="@string/digitsFilter"
             android:hint="@string/list_item"
             android:inputType="text"
             android:singleLine="true"
